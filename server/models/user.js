@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Full name cannot be empty'
+          msg: 'Name cannot be empty'
         },
         len: {
           args: [3, 50],
-          msg: 'Full name must be between 3 and 50 characters'
+          msg: 'Name must be between 3 and 50 characters'
         }
       }
     },
@@ -66,7 +66,18 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     profilePicture: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1745951413/profile_dummy_awnehj.jpg?_s=public-apps",
+      validate : {
+        isHigherThan5000kb(value) {
+          if (value) {
+            const size = value.split('/')[1].split('=')[1]
+            if (size > 5000) {
+              throw new Error('File size must be less than 5MB')
+            }
+          }
+        }
+      }
     }
   }, {
     sequelize,
@@ -74,7 +85,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.beforeCreate(ins=>{
     ins.password = hashPassword(ins.password)
-    ins.profilePicture = "https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1745951413/profile_dummy_awnehj.jpg?_s=public-apps"
   })
   return User;
 };

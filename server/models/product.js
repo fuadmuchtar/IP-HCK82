@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: 'Product name cannot be empty'
         },
+        notNull: {
+          msg: 'Product name cannot be null'
+        },
         len: {
           args: [3, 50],
           msg: 'Product name must be between 3 and 50 characters'
@@ -34,14 +37,14 @@ module.exports = (sequelize, DataTypes) => {
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0,
+      defaultValue: 1000,
       validate: {
         isNumeric: {
           msg: 'Price must be a number'
         },
         min: {
-          args: 0,
-          msg: 'Price must be greater than or equal to 0'
+          args: [1000],
+          msg: 'Price minimum is 1000'
         }
       }
     },
@@ -50,12 +53,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 0,
       validate: {
-        isNumeric: {
-          msg: 'Stock must be a number'
+        isInt: {
+          msg: 'Stock must be an integer'
         },
         min: {
-          args: 0,
+          args: [0],
           msg: 'Stock must be greater than or equal to 0'
+        },
+        notNull: {
+          msg: 'Stock cannot be null'
+        },
+        notEmpty: {
+          msg: 'Stock cannot be empty'
         }
       }
     },
@@ -66,26 +75,23 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: 'Description cannot be empty'
         },
-        len: {
-          args: [10, 500],
-          msg: 'Description must be between 10 and 500 characters'
+        notNull: {
+          msg: 'Description cannot be null'
         }
       }
     },
-    description: {
-      type: DataTypes.STRING,
+    CategoryId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        notEmpty: {
-          msg: 'Description cannot be empty'
+        notNull: {
+          msg: 'Category cannot be null'
         },
-        len: {
-          args: [10, 500],
-          msg: 'Description must be between 10 and 500 characters'
+        notEmpty: {
+          msg: 'Category cannot be empty'
         }
       }
     },
-    CategoryId: DataTypes.INTEGER,
     imgUrl: DataTypes.STRING,
     isDeleted: {
       type: DataTypes.BOOLEAN,

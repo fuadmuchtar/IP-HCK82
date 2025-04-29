@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "EthnoKart-db",
+    "database": "BumiKarya-db",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "postgres",
-    "database": "EthnoKart-test",
+    "database": "BumiKarya-test",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "postgres",
-    "database": "EthnoKart-prod",
+    "database": "BumiKarya-prod",
     "host": "localhost",
     "dialect": "postgres"
   }

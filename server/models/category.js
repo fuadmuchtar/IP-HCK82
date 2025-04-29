@@ -18,12 +18,20 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {
+        name: 'unique_name',
+        msg: 'Category name has already taken'
+      },
       validate: {
         notEmpty: {
           msg: 'Category name cannot be empty'
         },
         notNull: {
           msg: 'Category name cannot be null'
+        },
+        len: {
+          args: [3, 50],
+          msg: 'Category name must be between 3 and 50 characters'
         }
       }
     }

@@ -26,11 +26,5 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Order',
   });
-  Order.beforeCreate(ins => {
-
-    ins.paymentStatus = 'pending'
-    ins.deliveryStatus = 'pending'
-  }
-  )
   return Order;
 };

@@ -5,6 +5,7 @@
         "password": "admin",
         "phoneNumber": "1234567890",
         "address": "123 Main St, City, Country",
+        "profilePicture": "https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1745951413/profile_dummy_awnehj.jpg?_s=public-apps",
         "isAdmin" : true
     },
     {
@@ -13,6 +14,7 @@
         "password": "user1",
         "phoneNumber": "0987654321",
         "address": "456 Elm St, City, Country",
+        "profilePicture": "https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1745951413/profile_dummy_awnehj.jpg?_s=public-apps",
         "isAdmin" : false
     }
 ]

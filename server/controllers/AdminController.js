@@ -22,7 +22,6 @@ class AdminController {
       const access_token = signToken({ id: user.id })
       res.status(200).json({access_token})
     } catch (error) {
-        console.log(error)
       next(error)
     }
   }
@@ -36,7 +35,6 @@ class AdminController {
       });
       res.status(200).json(products);
     } catch (error) {
-        console.log(error)
       next(error);
     }
   }
@@ -54,7 +52,14 @@ class AdminController {
       }
       res.status(200).json(product);
     } catch (error) {
-        console.log(error)
+      next(error);
+    }
+  }
+  static async getAllCategories(req, res, next) {
+    try {
+      const categories = await Category.findAll();
+      res.status(200).json(categories);
+    } catch (error) {
       next(error);
     }
   }

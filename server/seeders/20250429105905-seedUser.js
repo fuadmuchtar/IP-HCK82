@@ -1,8 +1,10 @@
 'use strict';
 
+const { hashPassword } = require('../helpers/bcryptjs');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -12,14 +14,15 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    const data = require('../data/users.json').map(el=>{
+    const data = require('../data/users.json').map(el => {
+      el.password = hashPassword(el.password)
       el.createdAt = el.updatedAt = new Date()
       return el
-     })
-     await queryInterface.bulkInsert('Users', data)
+    })
+    await queryInterface.bulkInsert('Users', data)
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *

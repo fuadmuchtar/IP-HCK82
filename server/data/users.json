@@ -1,0 +1,18 @@
+[
+    {
+        "fullName": "admin",
+        "email": "admin@gmail.com",
+        "password": "admin",
+        "phoneNumber": "1234567890",
+        "address": "123 Main St, City, Country",
+        "isAdmin" : true
+    },
+    {
+        "fullName": "user1",
+        "email": "user1@gmail.com",
+        "password": "user1",
+        "phoneNumber": "0987654321",
+        "address": "456 Elm St, City, Country",
+        "isAdmin" : false
+    }
+]

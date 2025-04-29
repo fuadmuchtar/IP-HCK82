@@ -63,7 +63,18 @@ class AdminController {
       next(error);
     }
   }
-
+  static async getCategoryById(req, res, next) {
+    try {
+      const { id } = req.params;
+      const category = await Category.findByPk(id);
+      if (!category) {
+        throw { name: 'NotFound', message: 'Category not found' }
+      }
+      res.status(200).json(category);
+    } catch (error) {
+      next(error);
+    }
+  }
 //   static async getAllUsers(req, res, next) {
 //     try {
 //       const users = await User.findAll({

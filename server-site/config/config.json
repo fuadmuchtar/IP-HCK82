@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "BumiKarya-db",
+    "database": "EthnoKart-db",
     "host": "localhost",
     "dialect": "postgres"
   },

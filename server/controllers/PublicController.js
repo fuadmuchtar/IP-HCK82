@@ -1,5 +1,5 @@
 const { Op } = require('sequelize')
-const { Product, Category } = require('../models')
+const { User, Product, Category } = require('../models')
 
 class PublicController{
 
@@ -10,6 +10,19 @@ class PublicController{
             next(error)
         }
     }
+    // static async register(req, res, next) {
+    //     try {
+    
+    //       const user = await User.create(req.body);
+    
+    //       const newUser = user.toJSON();
+    //       delete newUser.password;
+    
+    //       res.status(201).json(newUser);
+    //     } catch (error) {
+    //       next(error)
+    //     }
+    //   }
 }
 
 module.exports = PublicController

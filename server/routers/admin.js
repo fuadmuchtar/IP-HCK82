@@ -4,6 +4,7 @@ const AdminController = require('../controllers/AdminController')
 const admin = express.Router()
 
 admin.get('/', PublicController.getHome)
+admin.post('/login', AdminController.login)
 admin.get('/products', AdminController.getAllProducts)
 
 

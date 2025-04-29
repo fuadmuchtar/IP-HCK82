@@ -6,6 +6,7 @@ const admin = express.Router()
 admin.get('/', PublicController.getHome)
 admin.post('/login', AdminController.login)
 admin.get('/products', AdminController.getAllProducts)
+admin.get('/products/:id', AdminController.getProductById)
 
 
 module.exports = admin

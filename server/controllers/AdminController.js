@@ -40,6 +40,24 @@ class AdminController {
       next(error);
     }
   }
+  static async getProductById(req, res, next) {
+    try {
+      const { id } = req.params;
+      const product = await Product.findByPk(id, {
+        include: {
+          model: Category,
+          attributes: ['name']
+        }
+      });
+      if (!product) {
+        throw { name: 'NotFound', message: 'Product not found' }
+      }
+      res.status(200).json(product);
+    } catch (error) {
+        console.log(error)
+      next(error);
+    }
+  }
 
 //   static async getAllUsers(req, res, next) {
 //     try {

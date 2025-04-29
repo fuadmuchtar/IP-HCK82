@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: {
         name: 'unique_email',
-        msg: 'Email has already been taken'
+        msg: 'Email has already taken'
       },
       allowNull: false,
       validate: {
@@ -63,15 +63,18 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     phoneNumber: DataTypes.STRING,
-    address: DataTypes.STRING
+    address: DataTypes.STRING,
+    profilePicture: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'User',
   });
   User.beforeCreate(ins=>{
-    console.log(ins, "<<< beforeCreate")
     ins.password = hashPassword(ins.password)
-    console.log(ins.password, "<<< password")
+    ins.profilePicture = "https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1745951413/profile_dummy_awnehj.jpg?_s=public-apps"
   })
   return User;
 };

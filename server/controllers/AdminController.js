@@ -75,16 +75,35 @@ class AdminController {
       next(error);
     }
   }
-//   static async getAllUsers(req, res, next) {
-//     try {
-//       const users = await User.findAll({
-//         attributes: { exclude: ['password'] }
-//       });
-//       res.status(200).json(users);
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
+  // static async getAllUsers(req, res, next) {
+  //   try {
+  //     const users = await User.findAll({
+  //       attributes: { 
+  //         exclude: ['password']
+  //        }
+  //     });
+  //     res.status(200).json(users);
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // }
+  static async getAllUsers(req, res, next) {
+    try {
+      const users = await User.findAll({
+        attributes: { 
+          exclude: ['password']
+        }
+      });
+  
+      const filteredUsers = users.filter(user => user.isAdmin !== true)
+  
+      res.status(200).json(filteredUsers);
+    } catch (error) {
+      next(error);
+    }
+  }
+  
+  
 }
 
 module.exports = AdminController;

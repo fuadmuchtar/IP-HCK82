@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       unique: {
-        name: 'unique_email',
         msg: 'Email has already taken'
       },
       allowNull: false,

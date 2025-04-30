@@ -4,18 +4,18 @@ const ProductController = require('../controllers/ProductController')
 const CategoryController = require('../controllers/CategoryController')
 const OrderController = require('../controllers/OrderController')
 const authentication = require('../middleware/authentication')
-const public = express.Router()
+const publicRouter = express.Router()
 
-public.get('/', PublicController.getHomePage)
-public.post('/login', PublicController.login)
-public.post('/register', PublicController.register)
+publicRouter.get('/', PublicController.getHomePage)
+publicRouter.post('/login', PublicController.login)
+publicRouter.post('/register', PublicController.register)
 
-public.get('/products', ProductController.getAllProducts)
-public.get('/products/:id', ProductController.getProductById)
-public.get('/products/c/:categoryId', ProductController.getProductsByCategory)
+publicRouter.get('/products', ProductController.getAllProducts)
+publicRouter.get('/products/:id', ProductController.getProductById)
+publicRouter.get('/products/c/:categoryId', ProductController.getProductsByCategory)
 
-public.get('/categories', CategoryController.getAllCategories)
+publicRouter.get('/categories', CategoryController.getAllCategories)
 
-public.post('/orders', authentication ,OrderController.createOrder)
+publicRouter.post('/orders', authentication ,OrderController.createOrder)
 
-module.exports = public
+module.exports = publicRouter

@@ -4,6 +4,7 @@ const public = express.Router()
 
 public.get('/', PublicController.getHomePage)
 public.post('/login', PublicController.login)
+public.post('/register', PublicController.register)
 
 
 module.exports = public

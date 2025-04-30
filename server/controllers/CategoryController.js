@@ -1,3 +1,5 @@
+const { Category } = require('../models');
+
 class CategoryController {
 
       static async createCategory(req, res, next) {

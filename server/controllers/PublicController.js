@@ -39,19 +39,19 @@ class PublicController{
           next(error)
         }
       }
-    // static async register(req, res, next) {
-    //     try {
+    static async register(req, res, next) {
+        try {
     
-    //       const user = await User.create(req.body);
+          const user = await User.create(req.body);
     
-    //       const newUser = user.toJSON();
-    //       delete newUser.password;
+          const newUser = user.toJSON();
+          delete newUser.password;
     
-    //       res.status(201).json(newUser);
-    //     } catch (error) {
-    //       next(error)
-    //     }
-    //   }
+          res.status(201).json(newUser);
+        } catch (error) {
+          next(error)
+        }
+      }
 }
 
 module.exports = PublicController

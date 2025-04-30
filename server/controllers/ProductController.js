@@ -54,8 +54,9 @@ class ProductController {
               attributes: ['name']
             }
           });
-          if (!products) {
-            throw { name: 'NotFound', message: 'Products not found' }
+
+          if (products.length === 0) {
+            throw { name: 'NotFound', message: 'Categories not found' }
           }
           res.status(200).json(products);
         }

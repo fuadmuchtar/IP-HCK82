@@ -60,7 +60,6 @@ class AdminController {
       }
       res.status(200).json(user);
     } catch (error) {
-      console.log(error)
       next(error);
     }
   }

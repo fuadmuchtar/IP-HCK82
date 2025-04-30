@@ -7,7 +7,6 @@ class ProductController {
           const newProduct = await Product.create(req.body)
           res.status(201).json(newProduct)
         } catch (error) {
-          console.log(error, "<<< error create product")
           next(error)
         }
       }
@@ -67,7 +66,6 @@ class ProductController {
       static async updateProduct(req, res, next) {
         try {
           const { id } = req.params;
-          console.log(req.body, "<<< req.body")
           const product = await Product.findByPk(id);
           if (!product) {
             throw { name: 'NotFound', message: 'Product not found' }

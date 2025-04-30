@@ -1,15 +1,44 @@
 const { Op } = require('sequelize')
-const { User, Product, Category } = require('../models')
+const { User } = require('../models')
+const { comparePassword } = require('../helpers/bcryptjs')
+const { signToken } = require('../helpers/jwt')
 
 class PublicController{
 
-    static async getHome(req, res, next){
+    static async getHomePage(req, res, next){
         try {
-            res.json({msg: "resto app by fuad <HCK-82/P2/IP>", app_version: 1.0})
+            res.json({msg: "BumiKarya by fuad <HCK-82/P2/IP> public", app_version: 1.0})
         } catch (error) {
             next(error)
         }
     }
+    static async login(req, res, next) {
+        try {
+          const { email, password } = req.body
+          if (!email || !password) {
+            throw { name: 'BadRequest', message: 'Email or password is required' }
+          }
+          const user = await User.findOne({ 
+            where: { 
+              email,
+              isAdmin: false 
+            } 
+          })
+          if (!user) {
+            throw { name: 'Unauthorized', message: 'Invalid email/password' }
+          }
+    
+          const isValidPassword = comparePassword(password, user.password)
+          if (!isValidPassword) {
+            throw { name: 'Unauthorized', message: 'Invalid email/password' }
+          }
+    
+          const access_token = signToken({ id: user.id })
+          res.status(200).json({ access_token })
+        } catch (error) {
+          next(error)
+        }
+      }
     // static async register(req, res, next) {
     //     try {
     

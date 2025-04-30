@@ -1,20 +1,22 @@
 const express = require('express')
 const PublicController = require('../controllers/PublicController')
 const AdminController = require('../controllers/AdminController')
+const ProductController = require('../controllers/ProductController')
+const CategoryController = require('../controllers/CategoryController')
 const admin = express.Router()
 
-admin.get('/', PublicController.getHome)
+admin.get('/', AdminController.getDashboard)
 
 // products
-admin.post('/products', AdminController.createProduct)
-admin.get('/products', AdminController.getAllProducts)
-admin.put('/products/:id', AdminController.updateProduct)
-admin.delete('/products/:id', AdminController.deleteProduct)
+admin.post('/products', ProductController.createProduct)
+admin.get('/products', ProductController.getAllProducts)
+admin.put('/products/:id', ProductController.updateProduct)
+admin.delete('/products/:id', ProductController.deleteProduct)
 
 // categories
-admin.post('/categories', AdminController.createCategory)
-admin.get('/categories', AdminController.getAllCategories)
-admin.put('/categories/:id', AdminController.updateCategory)
+admin.post('/categories', CategoryController.createCategory)
+admin.get('/categories', CategoryController.getAllCategories)
+admin.put('/categories/:id', CategoryController.updateCategory)
 
 // users
 admin.get('/users', AdminController.getAllUsers)

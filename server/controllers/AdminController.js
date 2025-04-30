@@ -1,8 +1,15 @@
 const { comparePassword } = require("../helpers/bcryptjs");
 const { signToken } = require("../helpers/jwt");
-const { User, Product, Category } = require("../models");
+const { User } = require("../models");
 
 class AdminController {
+  static async getDashboard(req, res, next) {
+    try {
+      res.json({ msg: "BumiKarya by fuad <HCK-82/P2/IP> server", app_version: 1.0 })
+    } catch (error) {
+      next(error)
+    }
+  }
   static async login(req, res, next) {
     try {
       const { email, password } = req.body
@@ -23,84 +30,6 @@ class AdminController {
       res.status(200).json({ access_token })
     } catch (error) {
       next(error)
-    }
-  }
-  static async createProduct(req, res, next) {
-    try {
-      const newProduct = await Product.create(req.body)
-      res.status(201).json(newProduct)
-    } catch (error) {
-      console.log(error, "<<< error create product")
-      next(error)
-    }
-  }
-  static async getAllProducts(req, res, next) {
-    try {
-      const products = await Product.findAll({
-        include: {
-          model: Category,
-          attributes: ['name']
-        }
-      });
-      res.status(200).json(products);
-    } catch (error) {
-      next(error);
-    }
-  }
-  static async updateProduct(req, res, next) {
-    try {
-      const { id } = req.params;
-      console.log(req.body, "<<< req.body")
-      const product = await Product.findByPk(id);
-      if (!product) {
-        throw { name: 'NotFound', message: 'Product not found' }
-      }
-      const updatedProduct = await product.update(req.body);
-      res.status(200).json(updatedProduct);
-    } catch (error) {
-      next(error);
-    }
-  }
-  static async deleteProduct(req, res, next) {
-    try {
-      const { id } = req.params;
-      const product = await Product.findByPk(id);
-      if (!product) {
-        throw { name: 'NotFound', message: 'Product not found' }
-      }
-      await product.destroy();
-      res.status(200).json({ message: 'Product deleted successfully' });
-    } catch (error) {
-      next(error);
-    }
-  }
-  static async createCategory(req, res, next) {
-    try {
-      const newCategory = await Category.create(req.body);
-      res.status(201).json(newCategory);
-    } catch (error) {
-      next(error);
-    }
-  }
-  static async getAllCategories(req, res, next) {
-    try {
-      const categories = await Category.findAll();
-      res.status(200).json(categories);
-    } catch (error) {
-      next(error);
-    }
-  }
-  static async updateCategory(req, res, next) {
-    try {
-      const { id } = req.params;
-      const category = await Category.findByPk(id);
-      if (!category) {
-        throw { name: 'NotFound', message: 'Category not found' }
-      }
-      const updatedCategory = await category.update(req.body);
-      res.status(200).json(updatedCategory);
-    } catch (error) {
-      next(error);
     }
   }
   static async getAllUsers(req, res, next) {

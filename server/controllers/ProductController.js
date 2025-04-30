@@ -24,6 +24,46 @@ class ProductController {
           next(error);
         }
       }
+      static async getProductById(req, res, next) {
+        try {
+          const { id } = req.params;
+          const product = await Product.findByPk(id, {
+            include: {
+              model: Category,
+              attributes: ['name']
+            }
+          });
+          if (!product) {
+            throw { name: 'NotFound', message: 'Product not found' }
+          }
+          res.status(200).json(product);
+        } catch (error) {
+          next(error);
+        }
+      }
+      static async getProductsByCategory(req, res, next) {
+        try {
+          const { categoryId } = req.params;
+          const products = await Product.findAll({
+            where: {
+              CategoryId: {
+                [Op.eq]: categoryId
+              }
+            },
+            include: {
+              model: Category,
+              attributes: ['name']
+            }
+          });
+          if (!products) {
+            throw { name: 'NotFound', message: 'Products not found' }
+          }
+          res.status(200).json(products);
+        }
+        catch (error) {
+          next(error);
+        }
+      }
       static async updateProduct(req, res, next) {
         try {
           const { id } = req.params;

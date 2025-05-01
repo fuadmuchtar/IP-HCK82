@@ -2,7 +2,7 @@
     {
         "fullName": "admin",
         "email": "admin@gmail.com",
-        "password": "admin",
+        "password": "123456",
         "phoneNumber": "1234567890",
         "address": "123 Main St, City, Country",
         "profilePicture": "https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1745951413/profile_dummy_awnehj.jpg?_s=public-apps",
@@ -11,7 +11,7 @@
     {
         "fullName": "user1",
         "email": "user1@gmail.com",
-        "password": "user1",
+        "password": "123456",
         "phoneNumber": "0987654321",
         "address": "456 Elm St, City, Country",
         "profilePicture": "https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1745951413/profile_dummy_awnehj.jpg?_s=public-apps",

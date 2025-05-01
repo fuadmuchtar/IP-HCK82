@@ -43,6 +43,36 @@ export const fetchProducts = createAsyncThunk('product/fetchProducts', async (pa
   }
 })
 
+export const fetchProductsByCategory = createAsyncThunk('product/fetchProductsByCategory', async (payload, { dispatch }) => {
+  try {
+    dispatch(fetchProductStart())
+
+    const { data } = await Axios({
+      method: "GET",
+      url: `http://localhost:3000/products/c/${payload}`,
+    });
+
+    dispatch(fetchProductSuccess(data))
+  } catch (error) {
+    dispatch(fetchProductError(error.response?.data?.message))
+  }
+})
+
+export const fetchProductsById = createAsyncThunk('product/fetchProductsById', async (payload, { dispatch }) => {
+  try {
+    dispatch(fetchProductStart())
+
+    const { data } = await Axios({
+      method: "GET",
+      url: `http://localhost:3000/products/${payload}`,
+    });
+
+    dispatch(fetchProductSuccess(data))
+  } catch (error) {
+    dispatch(fetchProductError(error.response?.data?.message))
+  }
+})
+
 // create async action
 // update async action
 // delete async action

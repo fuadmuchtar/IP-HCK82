@@ -1,6 +1,6 @@
 function errorHandler(err, req, res, next){
-    // console.log('masuk errorHandler')
-    // console.log(err, "<<< detail error")
+    console.log('masuk errorHandler')
+    console.log(err, "<<< detail error")
 
     if (err.name === "SequelizeValidationError" || err.name === "SequelizeUniqueConstraintError" || err.name === "unique_email") {
         return res.status(400).json({ message: err.errors[0].message })

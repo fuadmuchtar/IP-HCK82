@@ -15,9 +15,15 @@ publicRouter.get('/products', ProductController.getAllProducts)
 publicRouter.get('/products/:id', ProductController.getProductById)
 publicRouter.post('/products/:id/add', authentication, CartController.addToCart)
 publicRouter.get('/products/c/:categoryId', ProductController.getProductsByCategory)
+// publicRouter.get('/products/search', ProductController.searchProducts)
+
+publicRouter.get('/cart', authentication, CartController.getCart)
+publicRouter.delete('/cart/:id/delete', authentication, CartController.deleteFromCart)
 
 publicRouter.get('/categories', CategoryController.getAllCategories)
 
+publicRouter.get('/profile', authentication, PublicController.getProfile)
+publicRouter.put('/profile/update', authentication, PublicController.updateProfile)
 
 publicRouter.post('/orders', authentication ,OrderController.createOrder)
 

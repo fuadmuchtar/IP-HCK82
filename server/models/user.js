@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: 'Name cannot be empty'
         },
+        notNull: {
+          msg: 'Name cannot be null'
+        },
         len: {
           args: [3, 50],
           msg: 'Name must be between 3 and 50 characters'

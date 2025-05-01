@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export default function MainLayout() {
-  // if (localStorage.getItem("access_token")) {
+  if (localStorage.getItem("access_token")) {
     return (
       <>
           <Navbar />
@@ -13,7 +13,7 @@ export default function MainLayout() {
           {/* <Footer /> */}
       </>
     );
-  // }
+  }
 
-  // return <Navigate to="/login" />;
+  return <Navigate to="/login" />;
 }

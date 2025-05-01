@@ -1,5 +1,16 @@
+import { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../stores/productSlice";
+
 export default function Home(props) {
-    
+    const dispatch = useDispatch()
+    const { items: data, loading, error } = useSelector(state => state.product)
+  
+    useEffect(() => {
+      dispatch(fetchProducts())
+    }, []);
+
     return (
         <main>
             {/* Hero */}
@@ -13,118 +24,26 @@ export default function Home(props) {
             </div>
             <div className="container py-5">
                 <div className="row g-4 justify-content-center">
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+                    {data.slice(0, 4).map((item) => (
                         <div
-                            className="card custom-card"
-                            onclick="window.location.href='/produk/123'"
-                            style={{ cursor: "pointer" }}
+                            key={item.id}
+                            className="col-12 col-sm-6 col-md-4 col-lg-3"
                         >
-                            <img
-                                src="https://i.etsystatic.com/27490763/r/il/87a14d/2892395005/il_600x600.2892395005_8te6.jpg"
-                                alt="Mug"
-                            />
-                            <div className="custom-card-body">
-                                <div className="custom-card-title">Handcrafted Mugs</div>
-                                <div className="custom-card-text">Fresh ideas for inspiration</div>
+                            <div
+                                className="card custom-card"
+                                style={{ cursor: "pointer" }}
+                            >
+                                <img
+                                    src={item.imgUrl}
+                                    alt={item.name}
+                                />
+                                <div className="custom-card-body">
+                                    <div className="custom-card-title">{item.name}</div>
+                                    {/* <div className="custom-card-text">{item.description}</div> */}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div
-                            className="card custom-card"
-                            onclick="window.location.href='/produk/123'"
-                            style={{ cursor: "pointer" }}
-                        >
-                            <img
-                                src="https://i.etsystatic.com/27490763/r/il/87a14d/2892395005/il_600x600.2892395005_8te6.jpg"
-                                alt="Mug"
-                            />
-                            <div className="custom-card-body">
-                                <div className="custom-card-title">Handcrafted Mugs</div>
-                                <div className="custom-card-text">Fresh ideas for inspiration</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div
-                            className="card custom-card"
-                            onclick="window.location.href='/produk/123'"
-                            style={{ cursor: "pointer" }}
-                        >
-                            <img
-                                src="https://i.etsystatic.com/27490763/r/il/87a14d/2892395005/il_600x600.2892395005_8te6.jpg"
-                                alt="Mug"
-                            />
-                            <div className="custom-card-body">
-                                <div className="custom-card-title">Handcrafted Mugs</div>
-                                <div className="custom-card-text">Fresh ideas for inspiration</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div
-                            className="card custom-card"
-                            onclick="window.location.href='/produk/123'"
-                            style={{ cursor: "pointer" }}
-                        >
-                            <img
-                                src="https://i.etsystatic.com/27490763/r/il/87a14d/2892395005/il_600x600.2892395005_8te6.jpg"
-                                alt="Mug"
-                            />
-                            <div className="custom-card-body">
-                                <div className="custom-card-title">Handcrafted Mugs</div>
-                                <div className="custom-card-text">Fresh ideas for inspiration</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div
-                            className="card custom-card"
-                            onclick="window.location.href='/produk/123'"
-                            style={{ cursor: "pointer" }}
-                        >
-                            <img
-                                src="https://i.etsystatic.com/27490763/r/il/87a14d/2892395005/il_600x600.2892395005_8te6.jpg"
-                                alt="Mug"
-                            />
-                            <div className="custom-card-body">
-                                <div className="custom-card-title">Handcrafted Mugs</div>
-                                <div className="custom-card-text">Fresh ideas for inspiration</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div
-                            className="card custom-card"
-                            onclick="window.location.href='/produk/123'"
-                            style={{ cursor: "pointer" }}
-                        >
-                            <img
-                                src="https://i.etsystatic.com/27490763/r/il/87a14d/2892395005/il_600x600.2892395005_8te6.jpg"
-                                alt="Mug"
-                            />
-                            <div className="custom-card-body">
-                                <div className="custom-card-title">Handcrafted Mugs</div>
-                                <div className="custom-card-text">Fresh ideas for inspiration</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div
-                            className="card custom-card"
-                            onclick="window.location.href='/produk/123'"
-                            style={{ cursor: "pointer" }}
-                        >
-                            <img
-                                src="https://i.etsystatic.com/27490763/r/il/87a14d/2892395005/il_600x600.2892395005_8te6.jpg"
-                                alt="Mug"
-                            />
-                            <div className="custom-card-body">
-                                <div className="custom-card-title">Handcrafted Mugs</div>
-                                <div className="custom-card-text">Fresh ideas for inspiration</div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </main>

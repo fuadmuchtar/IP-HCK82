@@ -19,6 +19,7 @@ export default function Profile() {
     useEffect(() => {
         dispatch(fetchUser());
     }, [form]);
+    console.log(user)
 
     useEffect(() => {
         if (user) {

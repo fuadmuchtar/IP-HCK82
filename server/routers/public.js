@@ -27,4 +27,6 @@ publicRouter.put('/profile/update', authentication, PublicController.updateProfi
 
 publicRouter.post('/orders', authentication ,OrderController.createOrder)
 
+// publicRouter.post('/exploreindonesia', PublicController.askAi)
+
 module.exports = publicRouter

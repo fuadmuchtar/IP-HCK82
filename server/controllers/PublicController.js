@@ -14,6 +14,7 @@ class PublicController {
   }
   static async login(req, res, next) {
     try {
+      console.log(req.body)
       const { email, password } = req.body
       if (!email || !password) {
         throw { name: 'BadRequest', message: 'Email or password is required' }
@@ -67,13 +68,12 @@ class PublicController {
   static async updateProfile(req, res, next) {
     try {
       const { id } = req.user
-      const newReqBody = { ...req.body }
       const user = await User.findByPk(id)
       if (!user) {
         throw { name: 'NotFound', message: 'User not found' }
       }
   
-      await user.update(newReqBody)
+      await user.update(req.body)
       res.status(200).json(user)
     } catch (error) {
       next(error)

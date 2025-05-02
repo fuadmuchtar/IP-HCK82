@@ -12,11 +12,19 @@ class ProductController {
       }
       static async getAllProducts(req, res, next) {
         try {
+          const { search } = req.query
+          const where = {}
+          if (search) {
+        where.name = {
+          [Op.iLike]: `%${search}%`
+        }
+          }
           const products = await Product.findAll({
-            include: {
-              model: Category,
-              attributes: ['name']
-            }
+        where,
+        include: {
+          model: Category,
+          attributes: ['name']
+        }
           });
           res.status(200).json(products);
         } catch (error) {

@@ -12,10 +12,10 @@ publicRouter.post('/login', PublicController.login)
 publicRouter.post('/register', PublicController.register)
 
 publicRouter.get('/products', ProductController.getAllProducts)
+// publicRouter.get('/products/:search', ProductController.getAllProducts)
 publicRouter.get('/products/:id', ProductController.getProductById)
 publicRouter.post('/products/:id/add', authentication, CartController.addToCart)
 publicRouter.get('/products/c/:categoryId', ProductController.getProductsByCategory)
-// publicRouter.get('/products/search', ProductController.searchProducts)
 
 publicRouter.get('/cart', authentication, CartController.getCart)
 publicRouter.delete('/cart/:id/delete', authentication, CartController.deleteFromCart)

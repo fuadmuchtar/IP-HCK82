@@ -90,13 +90,17 @@ class PublicController {
       }
 
       // Construct prompt about Indonesian culture with the user's query
-      const prompt = `Aplikasi saya adalah, aplikasi yang membantu pengguna untuk menemukan informasi tentang budaya Indonesia.
-      Pengguna dapat memasukkan pertanyaan atau topik yang ingin mereka ketahui lebih lanjut tentang budaya Indonesia.
-      Misalnya, mereka dapat bertanya tentang tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya lainnya.
-      Saya ingin Anda memberikan informasi tentang budaya Indonesia yang terkait dengan pertanyaan ini: "${query}".
-      Fokuskan secara khusus pada tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya Indonesia.
-      Jika pertanyaan tersebut tidak terkait dengan budaya Indonesia, maka berikan jawaban 'Maaf saya hanya bisa menjawab pertanyaan seputar budaya indonesia.'
-      buatlah jawaban dalam format JSON dengan kunci "answer" dan nilai yang sesuai dengan informasi yang diberikan.`
+      const prompt = 
+      `aplikasi saya adalah aplikasi yang membantu pengguna untuk menemukan informasi tentang Indonesia.
+      ini adalah pertanyaan yang diajukan oleh pengguna: "${query}".
+      jika pertanyaan tersebut tidak terkait dengan Indonesia, maka berikan jawaban 'Maaf saya hanya bisa menjawab pertanyaan seputar indonesia.'`
+
+      // `Aplikasi saya adalah, aplikasi yang membantu pengguna untuk menemukan informasi tentang budaya Indonesia.
+      // Pengguna dapat memasukkan pertanyaan atau topik yang ingin mereka ketahui lebih lanjut tentang budaya Indonesia.
+      // Misalnya, mereka dapat bertanya tentang tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya lainnya.
+      // Saya ingin Anda memberikan informasi tentang budaya Indonesia yang terkait dengan pertanyaan ini: "${query}".
+      // Fokuskan secara khusus pada tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya Indonesia.
+      // Jika pertanyaan tersebut tidak terkait dengan budaya Indonesia, maka berikan jawaban 'Maaf saya hanya bisa menjawab pertanyaan seputar budaya indonesia.'`
       
       // Get response from Gemini AI
       const response = await genai(prompt)

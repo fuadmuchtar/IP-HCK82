@@ -1,8 +1,8 @@
-import { GoogleGenAI } from "@google/genai";
+const { GoogleGenAI } = require("@google/genai");
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-export async function genai(prompt) {
+async function genai(prompt) {
   const response = await ai.models.generateContent({
     model: "gemini-2.0-flash",
     contents: prompt
@@ -11,8 +11,7 @@ export async function genai(prompt) {
   return response.text
 }
 
-
-export async function genAIstructuredOutput(prompt) {
+async function genAIstructuredOutput(prompt) {
   const response = await genai(prompt)
 
   const json = response.replace('```json', "").replace('```', '')
@@ -20,7 +19,7 @@ export async function genAIstructuredOutput(prompt) {
   return JSON.parse(json)
 }
 
-export async function genAIDocUnderstand(link, question) {
+async function genAIDocUnderstand(link, question) {
 
   const pdfResp = await fetch(link)
     .then((response) => response.arrayBuffer());
@@ -42,3 +41,9 @@ export async function genAIDocUnderstand(link, question) {
 
   return response.text
 }
+
+module.exports = {
+  genai,
+  genAIstructuredOutput,
+  genAIDocUnderstand
+};

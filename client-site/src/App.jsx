@@ -17,30 +17,33 @@ import PrivateLayout from "./layouts/PrivateLayout";
 import Orders from "./pages/Orders";
 import ExploreIndonesia from "./pages/ExploreIndonesia";
 import Category from "./pages/Category";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<AuthLayout />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Route>
+    <GoogleOAuthProvider clientId="975231444722-s0eqa8mq21ivndnding0gmdno80trrhf.apps.googleusercontent.com">
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
 
-        <Route element={<PrivateLayout />}>
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/orders" element={<Orders />} />
-        </Route>
+          <Route element={<PrivateLayout />}>
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/orders" element={<Orders />} />
+          </Route>
 
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/category/:id" element={<Category />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/explorewithai" element={<ExploreIndonesia />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/category/:id" element={<Category />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/explorewithai" element={<ExploreIndonesia />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 

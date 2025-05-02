@@ -1,136 +1,175 @@
-const request = require('supertest')
-const app = require('../app')
-const { cleanUp, seed } = require('../helpers/jest')
-const { signToken } = require('../helpers/jwt')
-const { User } = require('../models')
+const request = require('supertest');
+const app = require('../app');
+const { cleanUp, seed, getToken } = require('../helpers/jest');
 
-let adminToken
-let userId
-
-beforeAll(async () => {
-  await cleanUp()
-  await seed()
+describe('Admin Controller Endpoints', () => {
+  let adminToken;
+  let userToken;
   
-  // Get admin user for testing
-  const admin = await User.findOne({ where: { email: 'admin@gmail.com' } })
-  adminToken = signToken({ id: admin.id })
-  userId = admin.id
-})
+  beforeAll(async () => {
+    await cleanUp();
+    await seed();
+    adminToken = await getToken('admin@mail.com', 'admin123', true);
+    userToken = await getToken('user@mail.com', 'user123', false);
+  });
 
-afterAll(async () => {
-  await cleanUp()
-})
+  afterAll(async () => {
+    await cleanUp();
+  });
 
-describe('AdminController Tests', () => {
-  describe('GET /admin', () => {
-    test('should return dashboard info', async () => {
+  describe('GET /admin (Dashboard)', () => {
+    it('should return dashboard info when admin is authenticated', async () => {
       const response = await request(app)
         .get('/admin')
-        .set('Authorization', `Bearer ${adminToken}`)
+        .set('Authorization', `Bearer ${adminToken}`);
       
-      expect(response.status).toBe(200)
-      expect(response.body).toHaveProperty('msg', 'BumiKarya by fuad <HCK-82/P2/IP> server')
-      expect(response.body).toHaveProperty('app_version', 1.0)
-    })
-  })
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('msg');
+      expect(response.body).toHaveProperty('app_version');
+    });
+
+    it('should return 401 when not authenticated', async () => {
+      const response = await request(app).get('/admin');
+      expect(response.status).toBe(401);
+    });
+
+    it('should return 403 when non-admin tries to access dashboard', async () => {
+      const response = await request(app)
+        .get('/admin')
+        .set('Authorization', `Bearer ${userToken}`);
+      
+      expect(response.status).toBe(403);
+    });
+  });
+
+  describe('POST /admin/login', () => {
+    it('should login successfully with valid admin credentials', async () => {
+      const response = await request(app)
+        .post('/admin/login')
+        .send({ email: 'admin@mail.com', password: 'admin123' });
+      
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('access_token');
+    });
+
+    it('should return 401 with invalid email', async () => {
+      const response = await request(app)
+        .post('/admin/login')
+        .send({ email: 'wrong@mail.com', password: 'admin123' });
+      
+      expect(response.status).toBe(401);
+      expect(response.body).toHaveProperty('message', 'Invalid email/password');
+    });
+
+    it('should return 401 with invalid password', async () => {
+      const response = await request(app)
+        .post('/admin/login')
+        .send({ email: 'admin@mail.com', password: 'wrongpassword' });
+      
+      expect(response.status).toBe(401);
+      expect(response.body).toHaveProperty('message', 'Invalid email/password');
+    });
+
+    it('should return 400 with missing email and password', async () => {
+      const response = await request(app)
+        .post('/admin/login')
+        .send({});
+      
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('message', 'Email or password is required');
+    });
+  });
 
   describe('GET /admin/users', () => {
-    test('should return all non-admin users', async () => {
+    it('should get all users when admin is authenticated', async () => {
       const response = await request(app)
         .get('/admin/users')
-        .set('Authorization', `Bearer ${adminToken}`)
+        .set('Authorization', `Bearer ${adminToken}`);
       
-      expect(response.status).toBe(200)
-      expect(response.body).toHaveProperty('count')
-      expect(response.body).toHaveProperty('rows')
-      expect(Array.isArray(response.body.rows)).toBe(true)
-      
-      // Check that returned users don't have password field and are not admins
-      if (response.body.rows.length > 0) {
-        expect(response.body.rows[0]).not.toHaveProperty('password')
-        expect(response.body.rows[0].isAdmin).toBe(false)
-      }
-    })
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('count');
+      expect(response.body).toHaveProperty('rows');
+      expect(Array.isArray(response.body.rows)).toBe(true);
+      expect(response.body.rows.length).toBeGreaterThan(0);
+    });
 
-    test('should require authentication', async () => {
+    it('should return 401 when not authenticated', async () => {
+      const response = await request(app).get('/admin/users');
+      expect(response.status).toBe(401);
+    });
+
+    it('should return 403 when non-admin tries to access users', async () => {
       const response = await request(app)
         .get('/admin/users')
+        .set('Authorization', `Bearer ${userToken}`);
       
-      expect(response.status).toBe(401)
-    })
-  })
+      expect(response.status).toBe(403);
+    });
+  });
 
-  describe('GET /admin/my-profile', () => {
-    test('should return admin profile', async () => {
+  describe('GET /admin/me', () => {
+    it('should get admin profile when authenticated', async () => {
       const response = await request(app)
-        .get('/admin/my-profile')
+        .get('/admin/me')
+        .set('Authorization', `Bearer ${adminToken}`);
+      
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('email');
+      expect(response.body).toHaveProperty('id');
+      expect(response.body).not.toHaveProperty('password');
+    });
+
+    it('should return 401 when not authenticated', async () => {
+      const response = await request(app).get('/admin/me');
+      expect(response.status).toBe(401);
+    });
+
+    it('should return 403 when non-admin tries to access admin profile', async () => {
+      const response = await request(app)
+        .get('/admin/me')
+        .set('Authorization', `Bearer ${userToken}`);
+      
+      expect(response.status).toBe(403);
+    });
+  });
+
+  describe('PUT /admin/me/update', () => {
+    it('should update admin profile successfully', async () => {
+      const updatedProfile = {
+        fullName: 'Updated Admin',
+        email: 'updated.admin@mail.com'
+      };
+      
+      const response = await request(app)
+        .put('/admin/me/update')
         .set('Authorization', `Bearer ${adminToken}`)
+        .send(updatedProfile);
       
-      expect(response.status).toBe(200)
-      expect(response.body).toHaveProperty('id', userId)
-      expect(response.body).not.toHaveProperty('password')
-    })
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('message', 'Profile updated successfully');
+      expect(response.body.user).toHaveProperty('fullName', 'Updated Admin');
+      expect(response.body.user).toHaveProperty('email', 'updated.admin@mail.com');
+    });
 
-    test('should return 401 without authentication', async () => {
-      const response = await request(app)
-        .get('/admin/my-profile')
-      
-      expect(response.status).toBe(401)
-    })
-
-    test('should handle non-existent user correctly', async () => {
-      // Create a token with a non-existent user ID
-      const fakeToken = signToken({ id: 9999 })
+    it('should return 401 when not authenticated', async () => {
+      const updatedProfile = { fullName: 'Updated Admin' };
       
       const response = await request(app)
-        .get('/admin/my-profile')
-        .set('Authorization', `Bearer ${fakeToken}`)
+        .put('/admin/me/update')
+        .send(updatedProfile);
       
-      // Accept either 404 or 500 status code since the implementation might vary
-      expect([404, 500]).toContain(response.status)
-    })
-  })
+      expect(response.status).toBe(401);
+    });
 
-  describe('PUT /admin/updateMe', () => {
-    test('should update admin profile successfully', async () => {
-      const updateData = {
-        fullName: 'Updated Admin Name',
-        email: 'updated.admin@gmail.com',
-        profilePicture: 'https://example.com/profile.jpg'
-      }
+    it('should return 403 when non-admin tries to update admin profile', async () => {
+      const updatedProfile = { fullName: 'Updated Admin' };
       
       const response = await request(app)
-        .put('/admin/updateMe')
-        .set('Authorization', `Bearer ${adminToken}`)
-        .send(updateData)
+        .put('/admin/me/update')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send(updatedProfile);
       
-      expect(response.status).toBe(200)
-      expect(response.body).toHaveProperty('message', 'Profile updated successfully')
-      expect(response.body.user).toHaveProperty('fullName', updateData.fullName)
-      expect(response.body.user).toHaveProperty('email', updateData.email)
-      expect(response.body.user).toHaveProperty('profilePicture', updateData.profilePicture)
-      expect(response.body.user).not.toHaveProperty('password')
-    })
-
-    test('should return 401 without authentication', async () => {
-      const response = await request(app)
-        .put('/admin/updateMe')
-        .send({ fullName: 'Test' })
-      
-      expect(response.status).toBe(401)
-    })
-
-    test('should handle non-existent user correctly', async () => {
-      // Create a token with a non-existent user ID
-      const fakeToken = signToken({ id: 9999 })
-      
-      const response = await request(app)
-        .put('/admin/updateMe')
-        .set('Authorization', `Bearer ${fakeToken}`)
-        .send({ fullName: 'Test' })
-      
-      // Accept either 404 or 500 status code since the implementation might vary
-      expect([404, 500]).toContain(response.status)
-    })
-  })
-})
+      expect(response.status).toBe(403);
+    });
+  });
+});

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import Axios from 'axios';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -35,6 +36,42 @@ function Login() {
         text: error.response?.data?.message || 'Terjadi kesalahan saat login',
       });
     }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const { data } = await Axios({
+        method: 'POST',
+        url: 'http://localhost:3000/google-login',
+        data: {
+          token: credentialResponse.credential
+        }
+      });
+      
+      localStorage.setItem('access_token', data.access_token);
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Google Login Berhasil',
+        text: 'Selamat datang di aplikasi kami!',
+      });
+      
+      navigate('/');
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Google Login Gagal',
+        text: error.response?.data?.message || 'Terjadi kesalahan saat login dengan Google',
+      });
+    }
+  };
+
+  const handleGoogleFailure = () => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Google Login Gagal',
+      text: 'Terjadi kesalahan saat login dengan Google',
+    });
   };
 
   return (
@@ -79,6 +116,25 @@ function Login() {
                   Login
                 </button>
               </form>
+              
+              <div className="d-flex align-items-center my-3">
+                <hr className="flex-grow-1" />
+                <span className="mx-2">atau</span>
+                <hr className="flex-grow-1" />
+              </div>
+              
+              <div className="d-flex justify-content-center">
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleFailure}
+                  useOneTap
+                  theme="outline"
+                  size="large"
+                  text="signin_with"
+                  shape="pill"
+                />
+              </div>
+              
               <p className="text-center mt-4 mb-0">
                 Belum punya akun? <Link to="/register">Daftar sekarang</Link>
               </p>

@@ -3,6 +3,8 @@ const { User } = require('../models')
 const { comparePassword } = require('../helpers/bcryptjs')
 const { signToken } = require('../helpers/jwt')
 const { genai } = require('../helpers/genai')
+const { OAuth2Client } = require('google-auth-library')
+const client = new OAuth2Client(process.env.GOOGLE_IDENTITY);
 
 class PublicController {
 
@@ -112,6 +114,46 @@ class PublicController {
       })
     } catch (error) {
       next(error)
+    }
+  }
+
+  static async googleLogin(req, res, next) {
+    try {
+      const { token } = req.body;
+      
+      if (!token) {
+        throw { name: 'BadRequest', message: 'Google token is required' };
+      }
+
+      const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: process.env.GOOGLE_IDENTITY
+      });
+      
+      const payload = ticket.getPayload();
+      
+      // Check if user exists
+      let user = await User.findOne({
+        where: {
+          email: payload.email
+        }
+      });
+      
+      if (!user) {
+        // Register user if not exists
+        user = await User.create({
+          fullName: payload.name,
+          email: payload.email,
+          password: process.env.JWT_SECRET + Math.random().toString(36).substring(2, 15), // Generate random secure password
+          profilePicture: payload.picture,
+          isAdmin: false
+        });
+      }
+      
+      const access_token = signToken({ id: user.id });
+      res.status(200).json({ access_token });
+    } catch (error) {
+      next(error);
     }
   }
 }

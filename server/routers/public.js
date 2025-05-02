@@ -9,6 +9,7 @@ const publicRouter = express.Router()
 
 publicRouter.get('/', PublicController.getHomePage)
 publicRouter.post('/login', PublicController.login)
+publicRouter.post('/google-login', PublicController.googleLogin)
 publicRouter.post('/register', PublicController.register)
 
 publicRouter.get('/products', ProductController.getAllProducts)

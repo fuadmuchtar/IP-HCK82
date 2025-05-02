@@ -16,6 +16,35 @@ describe('Cart Endpoints', () => {
     await cleanUp();
   });
 
+  describe('POST /products/:id/add - stock 0', () => {
+    it('should return 400 if product is out of stock', async () => {
+      // set stock jadi 0
+      await Product.update({ stock: 0 }, { where: { id: 1 } });
+  
+      const response = await request(app)
+        .post('/products/1/add')
+        .set('Authorization', `Bearer ${userToken}`);
+      
+      expect(response.status).toBe(400);
+      expect(response.body.message).toBe('Product out of stock');
+    });
+  });
+  
+  describe('DELETE /cart/:id/delete - product not found', () => {
+    it('should return 404 if product is not found', async () => {
+      // hapus product agar null
+      await Product.destroy({ where: { id: 3 } });
+  
+      const response = await request(app)
+        .delete('/cart/3/delete')
+        .set('Authorization', `Bearer ${userToken}`);
+      
+      expect(response.status).toBe(404);
+      expect(response.body.message).toBe('Product not found');
+    });
+  });
+
+  
   describe('GET /cart', () => {
     it('should get user cart when authenticated', async () => {
       const response = await request(app)

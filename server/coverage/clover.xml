@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1746166959625" clover="3.2.0">
-  <project timestamp="1746166959625" name="All files">
-    <metrics statements="446" coveredstatements="280" conditionals="96" coveredconditionals="48" methods="58" coveredmethods="37" elements="600" coveredelements="365" complexity="0" loc="446" ncloc="446" packages="6" files="24" classes="24"/>
+<coverage generated="1746183575970" clover="3.2.0">
+  <project timestamp="1746183575970" name="All files">
+    <metrics statements="339" coveredstatements="237" conditionals="76" coveredconditionals="41" methods="46" coveredmethods="35" elements="461" coveredelements="313" complexity="0" loc="339" ncloc="339" packages="6" files="20" classes="20"/>
     <package name="server">
       <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
       <file name="app.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/app.js">
@@ -21,52 +21,7 @@
       </file>
     </package>
     <package name="server.controllers">
-      <metrics statements="214" coveredstatements="76" conditionals="52" coveredconditionals="18" methods="24" coveredmethods="9"/>
-      <file name="AdminController.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/controllers/AdminController.js">
-        <metrics statements="42" coveredstatements="12" conditionals="14" coveredconditionals="5" methods="5" coveredmethods="1"/>
-        <line num="1" count="6" type="stmt"/>
-        <line num="2" count="6" type="stmt"/>
-        <line num="3" count="6" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="14" count="7" type="stmt"/>
-        <line num="15" count="7" type="stmt"/>
-        <line num="16" count="7" type="cond" truecount="4" falsecount="0"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="19" count="6" type="stmt"/>
-        <line num="20" count="6" type="cond" truecount="1" falsecount="1"/>
-        <line num="21" count="6" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="32" count="7" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="58" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="85" count="6" type="stmt"/>
-      </file>
+      <metrics statements="153" coveredstatements="64" conditionals="38" coveredconditionals="13" methods="17" coveredmethods="8"/>
       <file name="CartController.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/controllers/CartController.js">
         <metrics statements="36" coveredstatements="2" conditionals="10" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="1" count="6" type="stmt"/>
@@ -96,60 +51,24 @@
         <line num="55" count="0" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
-        <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="65" count="0" type="stmt"/>
         <line num="68" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
+        <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="71" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
-        <line num="79" count="6" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="83" count="6" type="stmt"/>
       </file>
       <file name="CategoryController.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/controllers/CategoryController.js">
-        <metrics statements="18" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="6" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
         <line num="36" count="6" type="stmt"/>
-      </file>
-      <file name="OrderController.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/controllers/OrderController.js">
-        <metrics statements="21" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="6" type="stmt"/>
-        <line num="2" count="6" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="52" count="6" type="stmt"/>
       </file>
       <file name="ProductController.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/controllers/ProductController.js">
         <metrics statements="45" coveredstatements="24" conditionals="10" coveredconditionals="6" methods="6" coveredmethods="3"/>
@@ -200,63 +119,77 @@
         <line num="103" count="6" type="stmt"/>
       </file>
       <file name="PublicController.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/controllers/PublicController.js">
-        <metrics statements="52" coveredstatements="30" conditionals="14" coveredconditionals="7" methods="6" coveredmethods="4"/>
+        <metrics statements="66" coveredstatements="33" conditionals="18" coveredconditionals="7" methods="7" coveredmethods="4"/>
         <line num="1" count="6" type="stmt"/>
         <line num="2" count="6" type="stmt"/>
         <line num="3" count="6" type="stmt"/>
         <line num="4" count="6" type="stmt"/>
         <line num="5" count="6" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="17" count="10" type="stmt"/>
-        <line num="18" count="10" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="19" count="10" type="stmt"/>
-        <line num="20" count="10" type="cond" truecount="4" falsecount="0"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="23" count="9" type="stmt"/>
-        <line num="29" count="9" type="cond" truecount="1" falsecount="1"/>
-        <line num="30" count="9" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="22" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="9" type="stmt"/>
+        <line num="31" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="9" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="41" count="10" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="10" type="stmt"/>
         <line num="47" count="3" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
         <line num="52" count="2" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="61" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="64" count="0" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
-        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="73" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
+        <line num="75" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
-        <line num="85" count="2" type="stmt"/>
-        <line num="86" count="2" type="stmt"/>
-        <line num="88" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="89" count="1" type="stmt"/>
-        <line num="94" count="1" type="stmt"/>
-        <line num="106" count="1" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
-        <line num="114" count="1" type="stmt"/>
-        <line num="119" count="6" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="87" count="2" type="stmt"/>
+        <line num="88" count="2" type="stmt"/>
+        <line num="90" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="110" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="126" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="127" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="144" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="146" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+        <line num="163" count="6" type="stmt"/>
       </file>
     </package>
     <package name="server.helpers">
-      <metrics statements="60" coveredstatements="47" conditionals="3" coveredconditionals="2" methods="14" coveredmethods="9"/>
+      <metrics statements="52" coveredstatements="48" conditionals="3" coveredconditionals="2" methods="11" coveredmethods="9"/>
       <file name="bcryptjs.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/helpers/bcryptjs.js">
         <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="6" type="stmt"/>
@@ -268,19 +201,11 @@
         <line num="12" count="6" type="stmt"/>
       </file>
       <file name="genai.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/helpers/genai.js">
-        <metrics statements="13" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="6" type="stmt"/>
         <line num="3" count="6" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="45" count="6" type="stmt"/>
       </file>
       <file name="jest.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/helpers/jest.js">
@@ -326,56 +251,44 @@
         <line num="4" count="6" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="8" count="6" type="stmt"/>
-        <line num="9" count="24" type="stmt"/>
+        <line num="9" count="13" type="stmt"/>
         <line num="12" count="6" type="stmt"/>
       </file>
     </package>
     <package name="server.middleware">
-      <metrics statements="42" coveredstatements="29" conditionals="25" coveredconditionals="18" methods="3" coveredmethods="2"/>
+      <metrics statements="33" coveredstatements="25" conditionals="23" coveredconditionals="18" methods="2" coveredmethods="2"/>
       <file name="authentication.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/middleware/authentication.js">
         <metrics statements="19" coveredstatements="13" conditionals="8" coveredconditionals="5" methods="1" coveredmethods="1"/>
         <line num="1" count="6" type="stmt"/>
         <line num="2" count="6" type="stmt"/>
-        <line num="5" count="34" type="stmt"/>
-        <line num="6" count="34" type="stmt"/>
-        <line num="8" count="34" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="10" type="stmt"/>
-        <line num="12" count="24" type="stmt"/>
-        <line num="13" count="24" type="stmt"/>
-        <line num="14" count="24" type="stmt"/>
-        <line num="16" count="24" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="18" type="stmt"/>
+        <line num="6" count="18" type="stmt"/>
+        <line num="8" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="12" count="13" type="stmt"/>
+        <line num="13" count="13" type="stmt"/>
+        <line num="14" count="13" type="stmt"/>
+        <line num="16" count="13" type="cond" truecount="3" falsecount="1"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="20" count="24" type="stmt"/>
+        <line num="20" count="13" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="25" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
-        <line num="35" count="34" type="stmt"/>
+        <line num="35" count="18" type="stmt"/>
         <line num="39" count="6" type="stmt"/>
       </file>
-      <file name="authorization.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/middleware/authorization.js">
-        <metrics statements="7" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="6" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="15" count="6" type="stmt"/>
-      </file>
       <file name="errorHandler.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/middleware/errorHandler.js">
-        <metrics statements="16" coveredstatements="14" conditionals="15" coveredconditionals="13" methods="1" coveredmethods="1"/>
-        <line num="2" count="55" type="stmt"/>
-        <line num="3" count="55" type="stmt"/>
-        <line num="5" count="55" type="cond" truecount="5" falsecount="0"/>
+        <metrics statements="14" coveredstatements="12" conditionals="15" coveredconditionals="13" methods="1" coveredmethods="1"/>
+        <line num="5" count="32" type="cond" truecount="5" falsecount="0"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="9" count="54" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="13" count="51" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="25" type="stmt"/>
-        <line num="17" count="26" type="cond" truecount="2" falsecount="0"/>
-        <line num="18" count="24" type="stmt"/>
+        <line num="9" count="31" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="13" count="29" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="14" type="stmt"/>
+        <line num="17" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="13" type="stmt"/>
         <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="0" type="stmt"/>
         <line num="25" count="2" type="cond" truecount="1" falsecount="1"/>
@@ -385,7 +298,7 @@
       </file>
     </package>
     <package name="server.models">
-      <metrics statements="66" coveredstatements="64" conditionals="14" coveredconditionals="9" methods="17" coveredmethods="17"/>
+      <metrics statements="62" coveredstatements="61" conditionals="10" coveredconditionals="7" methods="16" coveredmethods="16"/>
       <file name="cart.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/models/cart.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="6" type="stmt"/>
@@ -458,84 +371,52 @@
         <line num="105" count="6" type="stmt"/>
       </file>
       <file name="user.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/models/user.js">
-        <metrics statements="13" coveredstatements="12" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="4" count="6" type="stmt"/>
         <line num="5" count="6" type="stmt"/>
         <line num="6" count="6" type="stmt"/>
         <line num="15" count="6" type="stmt"/>
         <line num="16" count="6" type="stmt"/>
         <line num="19" count="6" type="stmt"/>
-        <line num="76" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="77" count="3" type="stmt"/>
-        <line num="78" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="89" count="6" type="stmt"/>
-        <line num="90" count="2" type="stmt"/>
-        <line num="92" count="6" type="stmt"/>
+        <line num="79" count="6" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="82" count="6" type="stmt"/>
       </file>
     </package>
     <package name="server.routers">
-      <metrics statements="52" coveredstatements="52" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="admin.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/routers/admin.js">
-        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="6" type="stmt"/>
-        <line num="2" count="6" type="stmt"/>
-        <line num="3" count="6" type="stmt"/>
-        <line num="4" count="6" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
-        <line num="6" count="6" type="stmt"/>
-        <line num="8" count="6" type="stmt"/>
-        <line num="11" count="6" type="stmt"/>
-        <line num="12" count="6" type="stmt"/>
-        <line num="13" count="6" type="stmt"/>
-        <line num="14" count="6" type="stmt"/>
-        <line num="17" count="6" type="stmt"/>
-        <line num="18" count="6" type="stmt"/>
-        <line num="19" count="6" type="stmt"/>
-        <line num="22" count="6" type="stmt"/>
-        <line num="25" count="6" type="stmt"/>
-        <line num="26" count="6" type="stmt"/>
-        <line num="29" count="6" type="stmt"/>
-      </file>
+      <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/routers/index.js">
-        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="6" type="stmt"/>
         <line num="2" count="6" type="stmt"/>
-        <line num="3" count="6" type="stmt"/>
-        <line num="4" count="6" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
-        <line num="6" count="6" type="stmt"/>
         <line num="7" count="6" type="stmt"/>
-        <line num="9" count="6" type="stmt"/>
-        <line num="10" count="6" type="stmt"/>
         <line num="12" count="6" type="stmt"/>
         <line num="15" count="6" type="stmt"/>
       </file>
       <file name="public.js" path="/home/techf/Workspace/hacktiv82/phase 2/W3/D1/IP-HCK82/server/routers/public.js">
-        <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="22" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="6" type="stmt"/>
         <line num="2" count="6" type="stmt"/>
         <line num="3" count="6" type="stmt"/>
         <line num="4" count="6" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
         <line num="6" count="6" type="stmt"/>
         <line num="7" count="6" type="stmt"/>
         <line num="8" count="6" type="stmt"/>
         <line num="10" count="6" type="stmt"/>
         <line num="11" count="6" type="stmt"/>
         <line num="12" count="6" type="stmt"/>
-        <line num="14" count="6" type="stmt"/>
-        <line num="16" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
         <line num="17" count="6" type="stmt"/>
         <line num="18" count="6" type="stmt"/>
-        <line num="20" count="6" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
         <line num="21" count="6" type="stmt"/>
-        <line num="23" count="6" type="stmt"/>
-        <line num="25" count="6" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
         <line num="26" count="6" type="stmt"/>
-        <line num="28" count="6" type="stmt"/>
-        <line num="30" count="6" type="stmt"/>
-        <line num="32" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
       </file>
     </package>
   </project>

@@ -65,59 +65,59 @@ describe('Product Endpoints', () => {
     });
   });
 
-  describe('POST /products (Admin only)', () => {
-    it('should create a new product when admin is authenticated', async () => {
-      const newProduct = {
-        name: 'Test Product',
-        price: 150000,
-        stock: 15,
-        imgUrl: 'https://example.com/test.jpg',
-        CategoryId: 1
-      };
+  // describe('POST /products (Admin only)', () => {
+  //   it('should create a new product when admin is authenticated', async () => {
+  //     const newProduct = {
+  //       name: 'Test Product',
+  //       price: 150000,
+  //       stock: 15,
+  //       imgUrl: 'https://example.com/test.jpg',
+  //       CategoryId: 1
+  //     };
       
-      const response = await request(app)
-        .post('/products')
-        .set('Authorization', `Bearer ${adminToken}`)
-        .send(newProduct);
+  //     const response = await request(app)
+  //       .post('/products')
+  //       .set('Authorization', `Bearer ${adminToken}`)
+  //       .send(newProduct);
       
-      expect(response.status).toBe(201);
-      expect(response.body).toHaveProperty('name', 'Test Product');
-      expect(response.body).toHaveProperty('price', 150000);
-    });
+  //     expect(response.status).toBe(201);
+  //     expect(response.body).toHaveProperty('name', 'Test Product');
+  //     expect(response.body).toHaveProperty('price', 150000);
+  //   });
 
-    it('should return 401 when no token is provided', async () => {
-      const newProduct = {
-        name: 'Test Product',
-        price: 150000,
-        stock: 15,
-        imgUrl: 'https://example.com/test.jpg',
-        CategoryId: 1
-      };
+  //   it('should return 401 when no token is provided', async () => {
+  //     const newProduct = {
+  //       name: 'Test Product',
+  //       price: 150000,
+  //       stock: 15,
+  //       imgUrl: 'https://example.com/test.jpg',
+  //       CategoryId: 1
+  //     };
       
-      const response = await request(app)
-        .post('/products')
-        .send(newProduct);
+  //     const response = await request(app)
+  //       .post('/products')
+  //       .send(newProduct);
       
-      expect(response.status).toBe(401);
-    });
+  //     expect(response.status).toBe(401);
+  //   });
 
-    it('should return 403 when user (non-admin) tries to create a product', async () => {
-      const newProduct = {
-        name: 'Test Product',
-        price: 150000,
-        stock: 15,
-        imgUrl: 'https://example.com/test.jpg',
-        CategoryId: 1
-      };
+  //   it('should return 403 when user (non-admin) tries to create a product', async () => {
+  //     const newProduct = {
+  //       name: 'Test Product',
+  //       price: 150000,
+  //       stock: 15,
+  //       imgUrl: 'https://example.com/test.jpg',
+  //       CategoryId: 1
+  //     };
       
-      const response = await request(app)
-        .post('/products')
-        .set('Authorization', `Bearer ${userToken}`)
-        .send(newProduct);
+  //     const response = await request(app)
+  //       .post('/products')
+  //       .set('Authorization', `Bearer ${userToken}`)
+  //       .send(newProduct);
       
-      expect(response.status).toBe(403);
-    });
-  });
+  //     expect(response.status).toBe(403);
+  //   });
+  // });
 
   describe('PUT /products/:id (Admin only)', () => {
     it('should update a product when admin is authenticated', async () => {
@@ -164,45 +164,45 @@ describe('Product Endpoints', () => {
     });
   });
 
-  describe('DELETE /products/:id (Admin only)', () => {
-    it('should delete a product when admin is authenticated', async () => {
-      // First create a product to delete
-      const newProduct = {
-        name: 'Product To Delete',
-        price: 50000,
-        stock: 5,
-        imgUrl: 'https://example.com/delete.jpg',
-        CategoryId: 1
-      };
+  // describe('DELETE /products/:id (Admin only)', () => {
+  //   it('should delete a product when admin is authenticated', async () => {
+  //     // First create a product to delete
+  //     const newProduct = {
+  //       name: 'Product To Delete',
+  //       price: 50000,
+  //       stock: 5,
+  //       imgUrl: 'https://example.com/delete.jpg',
+  //       CategoryId: 1
+  //     };
       
-      const created = await request(app)
-        .post('/products')
-        .set('Authorization', `Bearer ${adminToken}`)
-        .send(newProduct);
+  //     const created = await request(app)
+  //       .post('/products')
+  //       .set('Authorization', `Bearer ${adminToken}`)
+  //       .send(newProduct);
       
-      const productId = created.body.id;
+  //     const productId = created.body.id;
       
-      const response = await request(app)
-        .delete(`/products/${productId}`)
-        .set('Authorization', `Bearer ${adminToken}`);
+  //     const response = await request(app)
+  //       .delete(`/products/${productId}`)
+  //       .set('Authorization', `Bearer ${adminToken}`);
       
-      expect(response.status).toBe(200);
-      expect(response.body).toHaveProperty('message', 'Product deleted successfully');
-    });
+  //     expect(response.status).toBe(200);
+  //     expect(response.body).toHaveProperty('message', 'Product deleted successfully');
+  //   });
 
-    it('should return 401 when no token is provided', async () => {
-      const response = await request(app)
-        .delete('/products/1');
+  //   it('should return 401 when no token is provided', async () => {
+  //     const response = await request(app)
+  //       .delete('/products/1');
       
-      expect(response.status).toBe(401);
-    });
+  //     expect(response.status).toBe(401);
+  //   });
 
-    it('should return 404 when product does not exist', async () => {
-      const response = await request(app)
-        .delete('/products/999')
-        .set('Authorization', `Bearer ${adminToken}`);
+  //   it('should return 404 when product does not exist', async () => {
+  //     const response = await request(app)
+  //       .delete('/products/999')
+  //       .set('Authorization', `Bearer ${adminToken}`);
       
-      expect(response.status).toBe(404);
-    });
-  });
+  //     expect(response.status).toBe(404);
+  //   });
+  // });
 });

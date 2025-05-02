@@ -60,13 +60,17 @@ class CartController {
           ProductId: id
         }
       })
+
       if (!cart) {
-        throw res.status(404).json({ name: 'NotFound' , message: 'Cart not found' })
+        throw { name: 'NotFound', message: 'Cart not found' };
       }
+
       const product = await Product.findByPk(id)
+
       if (!product) {
-        throw res.status(404).json({ name: 'NotFound', message: 'Product not found' })
+        throw { name: 'NotFound', message: 'Product not found' };
       }
+    
       await cart.destroy()
       res.status(200).json({ message: 'Product deleted from cart' })
     }

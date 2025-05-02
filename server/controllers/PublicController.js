@@ -75,7 +75,7 @@ class PublicController {
       if (!user) {
         throw { name: 'NotFound', message: 'User not found' }
       }
-  
+
       await user.update(req.body)
       res.status(200).json(user)
     } catch (error) {
@@ -86,28 +86,21 @@ class PublicController {
   static async exploreIndonesia(req, res, next) {
     try {
       const { query } = req.body
-      
+
       if (!query) {
         throw { name: 'BadRequest', message: 'Query is required' }
       }
 
-      // Construct prompt about Indonesian culture with the user's query
-      const prompt = 
-      `aplikasi saya adalah aplikasi yang membantu pengguna untuk menemukan informasi tentang Indonesia.
-      ini adalah pertanyaan yang diajukan oleh pengguna: "${query}".
-      jika pertanyaan tersebut tidak terkait dengan Indonesia, maka berikan jawaban 'Maaf saya hanya bisa menjawab pertanyaan seputar indonesia.'`
+      const prompt =
+        `Aplikasi ini dirancang untuk membantu pengguna menemukan informasi seputar Indonesia. Berikut adalah pertanyaan dari pengguna: "${query}".
+Jika pertanyaan tersebut tidak berkaitan dengan Indonesia, mohon berikan jawaban singkat berupa:
+"Maaf, saya hanya bisa menjawab pertanyaan seputar Indonesia."
+Jika pertanyaan relevan, jawablah dalam bentuk paragraf yang rapi, informatif, dan mudah dibaca.
+      `
 
-      // `Aplikasi saya adalah, aplikasi yang membantu pengguna untuk menemukan informasi tentang budaya Indonesia.
-      // Pengguna dapat memasukkan pertanyaan atau topik yang ingin mereka ketahui lebih lanjut tentang budaya Indonesia.
-      // Misalnya, mereka dapat bertanya tentang tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya lainnya.
-      // Saya ingin Anda memberikan informasi tentang budaya Indonesia yang terkait dengan pertanyaan ini: "${query}".
-      // Fokuskan secara khusus pada tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya Indonesia.
-      // Jika pertanyaan tersebut tidak terkait dengan budaya Indonesia, maka berikan jawaban 'Maaf saya hanya bisa menjawab pertanyaan seputar budaya indonesia.'`
-      
-      // Get response from Gemini AI
       const response = await genai(prompt)
-      
-      res.status(200).json({ 
+
+      res.status(200).json({
         message: 'Successfully retrieved information',
         query,
         result: response
@@ -120,7 +113,7 @@ class PublicController {
   static async googleLogin(req, res, next) {
     try {
       const { token } = req.body;
-      
+
       if (!token) {
         throw { name: 'BadRequest', message: 'Google token is required' };
       }
@@ -129,16 +122,16 @@ class PublicController {
         idToken: token,
         audience: process.env.GOOGLE_IDENTITY
       });
-      
+
       const payload = ticket.getPayload();
-      
+
       // Check if user exists
       let user = await User.findOne({
         where: {
           email: payload.email
         }
       });
-      
+
       if (!user) {
         // Register user if not exists
         user = await User.create({
@@ -149,7 +142,7 @@ class PublicController {
           isAdmin: false
         });
       }
-      
+
       const access_token = signToken({ id: user.id });
       res.status(200).json({ access_token });
     } catch (error) {

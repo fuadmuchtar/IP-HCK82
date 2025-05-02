@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
 import { fetchCarts, removeFromCart } from '../stores/cartSlice';
 
 function Cart() {
     const dispatch = useDispatch()
     const { items: data, loading, error } = useSelector(state => state.cart)
+    const [random, setRandom] = useState(0)
 
     useEffect(() => {
         dispatch(fetchCarts())
-    }, []);
+    }, [random]);
 
-    console.log(data)
     return (
         <div className="container mt-5">
             <h3 className="mb-4">Keranjang Belanja</h3>
@@ -44,6 +43,7 @@ function Cart() {
                                             onClick={() => {
                                                 dispatch(removeFromCart(item.ProductId))
                                                 dispatch(fetchCarts())
+                                                setRandom(Math.random())
                                             }}
                                         >
                                             <i className="bi bi-trash" /> Hapus

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../stores/categorySlice";
@@ -7,6 +7,7 @@ import { Link } from "react-router";
 export default function Navbar(props) {
   const dispatch = useDispatch()
   const { items: data, loading, error } = useSelector(state => state.category)
+  const [search, setSearch] = useState('')
 
   const token = localStorage.getItem('access_token')
 
@@ -54,22 +55,9 @@ export default function Navbar(props) {
                 </ul>
               </li>
             </ul>
-            <form className="d-flex mx-auto" style={{ width: 400 }}>
-              <div className="input-group">
-                <input
-                  className="form-control rounded-start-pill"
-                  type="search"
-                  placeholder="Cari produk..."
-                  aria-label="Search"
-                />
-                <button className="btn btn-success rounded-end-pill" type="submit">
-                  <i className="bi bi-search" />
-                </button>
-              </div>
-            </form>
             <div className="d-flex align-items-center ms-lg-3 mt-2 mt-lg-0">
 
-              <Link to='/explorewithai' className="btn btn-outline-success me-5">
+              <Link to='/explorewithai' className="btn btn-outline-warning me-5">
                 Explore Indonesia
               </Link>
               <Link to="/cart" className="btn btn-light me-2 position-relative">

@@ -35,6 +35,7 @@ export const fetchProducts = createAsyncThunk('product/fetchProducts', async (pa
     const { data } = await Axios({
       method: "GET",
       url: `http://localhost:3000/products`,
+      params: payload
     });
 
     dispatch(fetchProductSuccess(data))

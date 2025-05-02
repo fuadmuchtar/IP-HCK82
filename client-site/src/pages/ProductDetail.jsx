@@ -32,7 +32,7 @@ function ProductDetail() {
 
   return (
     <div className="container mt-5">
-      <div className="row">
+      <div className="row mb-5">
         <div className="col-md-5">
           <img
             src={product.imgUrl}

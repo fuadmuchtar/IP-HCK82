@@ -65,6 +65,11 @@ export const addToCart = createAsyncThunk('cart/addToCart', async (payload, { di
             text: 'Produk berhasil ditambahkan ke keranjang',
         })
     } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Maaf, kamu belum login',
+            text: 'Silahkan login terlebih dahulu untuk menambahkan produk ke keranjang',
+        })
         dispatch(fetchCartError(error.response?.data))
     }
 })

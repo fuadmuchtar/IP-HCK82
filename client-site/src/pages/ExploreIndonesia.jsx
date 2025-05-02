@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 
 export default function ExploreIndonesia() {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // const params = useParams();
+
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     if (!prompt) return;
 
     setLoading(true);
     try {
-      const { data } = await axios.post('/api/gemini', { prompt }); // backend kamu yang handle Gemini API
+      const { data } = await Axios.post('http://localhost:3000/exploreindonesia',{
+        'query': prompt
+      });
       setResponse(data.result);
     } catch (err) {
       setResponse('Maaf, terjadi kesalahan saat memproses permintaanmu.');

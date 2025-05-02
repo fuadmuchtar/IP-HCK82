@@ -15,10 +15,10 @@ export default function Profile() {
         address: "",
         phoneNumber: "",
     });
-
+    
     useEffect(() => {
         dispatch(fetchUser());
-    }, []);
+    }, [form]);
 
     useEffect(() => {
         if (user) {
@@ -31,6 +31,7 @@ export default function Profile() {
             });
         }
     }, []);
+    
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });

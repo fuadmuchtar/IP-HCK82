@@ -25,7 +25,10 @@ The application is a web-based platform built using modern frontend technologies
 git clone https://github.com/yourusername/IP-HCK82.git
 
 # Navigate to the project directory
-cd IP-HCK82
+> server
+cd server
+> client
+cd client-site
 
 # Install dependencies
 npm install

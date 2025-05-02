@@ -19,3 +19,26 @@ export async function genAIstructuredOutput(prompt) {
 
   return JSON.parse(json)
 }
+
+export async function genAIDocUnderstand(link, question) {
+
+  const pdfResp = await fetch(link)
+    .then((response) => response.arrayBuffer());
+
+  const contents = [
+    { text: question },
+    {
+      inlineData: {
+        mimeType: 'application/pdf',
+        data: Buffer.from(pdfResp).toString("base64")
+      }
+    }
+  ];
+
+  const response = await ai.models.generateContent({
+    model: "gemini-2.0-flash",
+    contents: contents
+  });
+
+  return response.text
+}

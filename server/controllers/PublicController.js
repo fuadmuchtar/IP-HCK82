@@ -2,6 +2,7 @@ const { Op } = require('sequelize')
 const { User } = require('../models')
 const { comparePassword } = require('../helpers/bcryptjs')
 const { signToken } = require('../helpers/jwt')
+const { genai } = require('../helpers/genai')
 
 class PublicController {
 
@@ -75,6 +76,36 @@ class PublicController {
   
       await user.update(req.body)
       res.status(200).json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static async exploreIndonesia(req, res, next) {
+    try {
+      const { query } = req.body
+      
+      if (!query) {
+        throw { name: 'BadRequest', message: 'Query is required' }
+      }
+
+      // Construct prompt about Indonesian culture with the user's query
+      const prompt = `Aplikasi saya adalah, aplikasi yang membantu pengguna untuk menemukan informasi tentang budaya Indonesia.
+      Pengguna dapat memasukkan pertanyaan atau topik yang ingin mereka ketahui lebih lanjut tentang budaya Indonesia.
+      Misalnya, mereka dapat bertanya tentang tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya lainnya.
+      Saya ingin Anda memberikan informasi tentang budaya Indonesia yang terkait dengan pertanyaan ini: "${query}".
+      Fokuskan secara khusus pada tradisi, sejarah, seni, adat istiadat, bahasa, atau praktik budaya Indonesia.
+      Jika pertanyaan tersebut tidak terkait dengan budaya Indonesia, maka berikan jawaban 'Maaf saya hanya bisa menjawab pertanyaan seputar budaya indonesia.'
+      buatlah jawaban dalam format JSON dengan kunci "answer" dan nilai yang sesuai dengan informasi yang diberikan.`
+      
+      // Get response from Gemini AI
+      const response = await genai(prompt)
+      
+      res.status(200).json({ 
+        message: 'Successfully retrieved information',
+        query,
+        result: response
+      })
     } catch (error) {
       next(error)
     }

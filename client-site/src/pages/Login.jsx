@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,6 +29,7 @@ function Login() {
           localStorage.setItem('access_token', success.data.access_token);
           if (success) navigate('/');
     } catch (error) {
+      console.log(error)
         Swal.fire({
             icon: 'error',
             title: 'Login Gagal',

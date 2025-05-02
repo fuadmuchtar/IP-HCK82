@@ -8,6 +8,8 @@ export default function Navbar(props) {
   const dispatch = useDispatch()
   const { items: data, loading, error } = useSelector(state => state.category)
 
+  const token = localStorage.getItem('access_token')
+
   useEffect(() => {
     dispatch(fetchCategories())
   }, []);
@@ -17,9 +19,9 @@ export default function Navbar(props) {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <a className="navbar-brand" href="#">
-            BroFuadMarket
-          </a>
+          <Link to="/" className="navbar-brand">
+            Bumi Karya
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,9 +31,7 @@ export default function Navbar(props) {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            {/* Left Menu */}
             <ul className="navbar-nav me-auto">
-              {/* Dropdown Baru */}
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -54,7 +54,6 @@ export default function Navbar(props) {
                 </ul>
               </li>
             </ul>
-            {/* Centered Search */}
             <form className="d-flex mx-auto" style={{ width: 400 }}>
               <div className="input-group">
                 <input
@@ -69,18 +68,19 @@ export default function Navbar(props) {
               </div>
             </form>
             <div className="d-flex align-items-center ms-lg-3 mt-2 mt-lg-0">
-              <a href="#" className="btn btn-light me-2 position-relative">
-                <i className="bi bi-cart3" />
-                {/* Optional: badge */}
-                {/* <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span> */}
-              </a>
-              <a href="#" className="btn btn-outline-success me-2">
+
+              <Link to='/explorewithai' className="btn btn-outline-success me-5">
                 Explore Indonesia
-              </a>
-              {/* Profile & Sign In */}
+              </Link>
+              <Link to="/cart" className="btn btn-light me-2 position-relative">
+                <i className="bi bi-cart3" />
+              </Link>
+              {/* Optional: badge */}
+              {/* <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>*/}
+              {token && (
               <div className="dropdown">
                 <button
-                  className="btn btn-outline-light dropdown-toggle"
+                  className="btn btn-light dropdown-toggle"
                   type="button"
                   data-bs-toggle="dropdown"
                 >
@@ -88,17 +88,31 @@ export default function Navbar(props) {
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="/profile">
                       Profile
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Sign In
-                    </a>
+                  <Link className="dropdown-item" to="/orders">
+                      My Orders
+                    </Link>
+                  </li>
+                  <li>
+                  <Link className="dropdown-item" onClick={() => {
+                      localStorage.removeItem('access_token');
+                      dispatch(logout());
+                      }}>
+                      Log out
+                    </Link>
                   </li>
                 </ul>
               </div>
+              )}
+              {!token && (
+                <Link to="/login" className="btn btn-light">
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </div>

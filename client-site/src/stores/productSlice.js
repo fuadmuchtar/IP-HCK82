@@ -42,7 +42,3 @@ export const fetchProducts = createAsyncThunk('product/fetchProducts', async (pa
     dispatch(fetchProductError(error.response?.data?.message))
   }
 })
-
-// create async action
-// update async action
-// delete async action

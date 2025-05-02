@@ -1,29 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../stores/productSlice";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import Axios from "axios";
 
-export default function Home(props) {
+export default function Category(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { items: data, loading, error } = useSelector(state => state.product)
+    const [data, setData] = useState([])
+    const params = useParams()
+    // const { items: data, loading, error } = useSelector(state => state.product)
 
+    async function fetchProductByCategory() {
+        const { data } = await Axios({
+            method: "GET",
+            url: `http://localhost:3000/products/c/${params.id}`,
+        });
+
+        setData(data)
+    }
     useEffect(() => {
-        dispatch(fetchProducts())
-    }, []);
+        fetchProductByCategory()
+    }, [params.id]);
 
     return (
         <main>
-            {/* Hero */}
-            <div className="bg-light py-5 text-center">
-                <div className="container">
-                    <h1 className="display-4">Selamat Datang!</h1>
-                    <p className="lead">
-                        Web E-Commerce barang unik, kerajinan tangan khas Indonesia!
-                    </p>
-                </div>
-            </div>
             <div className="container py-5">
                 <div className="row g-4 justify-content-center">
                     {data.slice(0, 4).map((item) => (

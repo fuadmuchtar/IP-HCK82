@@ -13,7 +13,7 @@ export default function ExploreIndonesia() {
 
     setLoading(true);
     try {
-      const { data } = await Axios.post('http://localhost:3000/exploreindonesia', {
+      const { data } = await Axios.post('https://p2-ip.bebrave.cloud/exploreindonesia', {
         'query': prompt
       });
       setResponse(data.result);
@@ -24,7 +24,7 @@ export default function ExploreIndonesia() {
   };
 
   const backgroundStyle = {
-    backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/800px-Flag_of_Indonesia.svg.png")',
+    backgroundImage: 'url("https://res.cloudinary.com/dpepx9rhe/image/upload/fl_preserve_transparency/v1746232668/939236-3840x2160-desktop-4k-mandala-wallpaper_hxmhkp.jpg?_s=public-apps")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',

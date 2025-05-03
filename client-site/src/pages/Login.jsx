@@ -19,7 +19,7 @@ function Login() {
     try {
       const success = await Axios({
         method: 'POST',
-        url: 'http://localhost:3000/login',
+        url: 'https://p2-ip.bebrave.cloud/login',
         data: form,
       });
       Swal.fire({
@@ -42,7 +42,7 @@ function Login() {
     try {
       const { data } = await Axios({
         method: 'POST',
-        url: 'http://localhost:3000/google-login',
+        url: 'https://p2-ip.bebrave.cloud/google-login',
         data: {
           token: credentialResponse.credential
         }

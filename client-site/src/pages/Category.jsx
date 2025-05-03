@@ -14,7 +14,7 @@ export default function Category(props) {
     async function fetchProductByCategory() {
         const { data } = await Axios({
             method: "GET",
-            url: `http://localhost:3000/products/c/${params.id}`,
+            url: `https://p2-ip.bebrave.cloud/products/c/${params.id}`,
         });
 
         setData(data)

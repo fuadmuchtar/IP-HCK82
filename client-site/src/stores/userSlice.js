@@ -34,7 +34,7 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async (payload, { di
 
     const { data } = await Axios({
       method: "GET",
-      url: `http://localhost:3000/profile`,
+      url: `https://p2-ip.bebrave.cloud/profile`,
         headers: {
             "Authorization": `Bearer ${localStorage.getItem('access_token')}`
         }
@@ -52,7 +52,7 @@ export const updateUser = createAsyncThunk('user/updateUser', async (payload, { 
 
     const { data } = await Axios({
       method: "PUT",
-      url: `http://localhost:3000/profile/update`,
+      url: `https://p2-ip.bebrave.cloud/profile/update`,
       data: payload,
         headers: {
             "Authorization": `Bearer ${localStorage.getItem('access_token')}`

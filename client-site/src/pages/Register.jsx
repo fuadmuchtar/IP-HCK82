@@ -21,7 +21,7 @@ function Register() {
     try {
       const success = await Axios({
         method: 'POST',
-        url: 'http://localhost:3000/register',
+        url: 'https://p2-ip.bebrave.cloud/register',
         data: form,
       });
       Swal.fire({

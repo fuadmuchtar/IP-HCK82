@@ -35,7 +35,7 @@ export const fetchCarts = createAsyncThunk('cart/fetchCarts', async (payload, { 
 
         const { data } = await Axios({
             method: "GET",
-            url: `http://localhost:3000/cart`,
+            url: `https://p2-ip.bebrave.cloud/cart`,
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('access_token')}`
             }
@@ -53,7 +53,7 @@ export const addToCart = createAsyncThunk('cart/addToCart', async (payload, { di
 
         const { data } = await Axios({
             method: "POST",
-            url: `http://localhost:3000/products/${payload}/add`,
+            url: `https://p2-ip.bebrave.cloud/products/${payload}/add`,
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('access_token')}`
             }
@@ -80,7 +80,7 @@ export const removeFromCart = createAsyncThunk('cart/removeFromCart', async (pay
 
         const { data } = await Axios({
             method: "DELETE",
-            url: `http://localhost:3000/cart/${payload}/delete`,
+            url: `https://p2-ip.bebrave.cloud/cart/${payload}/delete`,
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('access_token')}`
             }

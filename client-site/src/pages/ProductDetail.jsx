@@ -14,7 +14,7 @@ function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/products/${id}`);
+        const res = await axios.get(`https://p2-ip.bebrave.cloud/products/${id}`);
         setProduct(res.data);
       } catch (error) {
         console.error('Gagal ambil data produk:', error);

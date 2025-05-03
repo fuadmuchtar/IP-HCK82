@@ -34,7 +34,7 @@ export const fetchCategories = createAsyncThunk('category/fetchCategories', asyn
 
     const { data } = await Axios({
       method: "GET",
-      url: `http://localhost:3000/categories`,
+      url: `https://p2-ip.bebrave.cloud/categories`,
     });
 
     dispatch(fetchCategorySuccess(data))

@@ -34,7 +34,7 @@ export const fetchProducts = createAsyncThunk('product/fetchProducts', async (pa
 
     const { data } = await Axios({
       method: "GET",
-      url: `http://localhost:3000/products`,
+      url: `https://p2-ip.bebrave.cloud/products`,
       params: payload
     });
 

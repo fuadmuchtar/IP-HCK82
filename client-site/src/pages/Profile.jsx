@@ -15,24 +15,17 @@ export default function Profile() {
         address: "",
         phoneNumber: "",
     });
-    
-    useEffect(() => {
-        dispatch(fetchUser());
-    }, [form]);
-    console.log(user)
 
     useEffect(() => {
-        if (user) {
-            setForm({
-                fullName: user.fullName || "",
-                email: user.email || "",
-                password: user.password || "",
-                address: user.address || "",
-                phoneNumber: user.phoneNumber || "",
-            });
-        }
+        dispatch(fetchUser());
+        setForm({
+            fullName: user.fullName || "",
+            email: user.email || "",
+            password: user.password || "",
+            address: user.address || "",
+            phoneNumber: user.phoneNumber || "",
+        });
     }, []);
-    
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -59,14 +52,14 @@ export default function Profile() {
         }
     };
 
-    //   if (loading) {
-    //     return (
-    //       <div className="container mt-5 text-center">
-    //         <div className="spinner-border text-primary" role="status" />
-    //         <p className="mt-2">Memuat data profil...</p>
-    //       </div>
-    //     );
-    //   }
+      if (loading) {
+        return (
+          <div className="container mt-5 text-center">
+            <div className="spinner-border text-primary" role="status" />
+            <p className="mt-2">Memuat data profil...</p>
+          </div>
+        );
+      }
 
     if (!user) {
         return (

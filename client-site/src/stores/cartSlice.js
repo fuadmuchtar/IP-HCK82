@@ -86,6 +86,7 @@ export const removeFromCart = createAsyncThunk('cart/removeFromCart', async (pay
             }
         });
 
+        dispatch(fetchCarts())
         Swal.fire({
             icon: 'success',
             title: 'Berhasil',

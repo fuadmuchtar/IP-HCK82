@@ -5,11 +5,10 @@ import { fetchCarts, removeFromCart } from '../stores/cartSlice';
 function Cart() {
     const dispatch = useDispatch()
     const { items: data, loading, error } = useSelector(state => state.cart)
-    const [random, setRandom] = useState(0)
 
     useEffect(() => {
         dispatch(fetchCarts())
-    }, [random]);
+    }, []);
 
     return (
         <div className="container mt-5">
@@ -42,8 +41,7 @@ function Cart() {
                                             className="btn btn-sm btn-danger"
                                             onClick={() => {
                                                 dispatch(removeFromCart(item.ProductId))
-                                                dispatch(fetchCarts())
-                                                setRandom(Math.random())
+                                                // dispatch(fetchCarts())
                                             }}
                                         >
                                             <i className="bi bi-trash" /> Hapus

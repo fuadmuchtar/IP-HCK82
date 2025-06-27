@@ -22,7 +22,7 @@ The application is a web-based platform built using modern frontend technologies
 ## Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/IP-HCK82.git
+git clone https://github.com/fuadmuchtar/BumiKarya.git
 
 # Navigate to the project directory
 > server
